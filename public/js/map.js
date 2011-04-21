@@ -58,7 +58,7 @@ var map = (function() {
         },
         show_info : function(marker) {
             var contentString = '<div id="marker">'+
-                '<h1>' + marker.event.title +' </h1>'+
+                '<h1 title="' + marker.event.date + '">' + marker.event.rel +' </h1>'+
                 '<div id="bodyContent">'+
                 '<p>' + marker.event.lat + ',' + marker.event.lng + '</p>'+
                 '</div>'+

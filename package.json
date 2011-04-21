@@ -13,6 +13,7 @@
     "express": "2.2.2",
     "jade": "0.10.4",
     "underscore": "1.1.5",
+    "relative-date": "1.0.0",
     "sqlite": "1.0.4"
   }
 }

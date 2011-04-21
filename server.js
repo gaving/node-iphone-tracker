@@ -1,9 +1,10 @@
 (function() {
-    var app, express, sqlite, db, pub, socket, events = [], _;
+    var app, express, sqlite, db, pub, socket, events = [], _, rd;
     express = require('express'),
     sys = require('sys'),
     sqlite = require('sqlite'),
     _ = require('underscore'),
+    rd = require('relative-date');
     db = new sqlite.Database();
 
     pub = __dirname + '/public';
@@ -29,13 +30,18 @@
                 console.log("Tonight. You.");
                 throw error;
             }
-            var sql = 'SELECT * FROM CellLocation ORDER BY Timestamp ASC LIMIT 50';
+            var sql = 'SELECT * FROM CellLocation ORDER BY RANDOM() ASC LIMIT 50';
             db.prepare(sql, function (error, statement) {
                 if (error) throw error;
                 statement.fetchAll(function (error, rows) {
                     _.each(rows, function(row, i) {
+                        var unix = row.Timestamp+(31*365.25*24*60*60);
+                        var weekInSeconds = 7*24*60*60;
+                        var time = Math.floor(unix/weekInSeconds)*weekInSeconds;
+                        var date = new Date(time*1000);
                         var marker = {
-                            title: "Time: " + row.Timestamp,
+                            rel: rd(date),
+                            date: date.toString(),
                             lat: row.Latitude,
                             lng: row.Longitude
                         };

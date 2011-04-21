@@ -1,5 +1,6 @@
 - fish out the database location properly
 - toggle cell/wifi locations on/off
 - toggle device databases entirely
-- make timestamps readable
+- [x] make timestamps relative and readable
 - do something with the limit
+- pull out pictures on that date and stick them about the map
