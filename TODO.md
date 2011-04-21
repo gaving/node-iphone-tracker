@@ -1,0 +1,5 @@
+- fish out the database location properly
+- toggle cell/wifi locations on/off
+- toggle device databases entirely
+- make timestamps readable
+- do something with the limit
